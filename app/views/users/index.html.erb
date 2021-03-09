@@ -1,0 +1,17 @@
+<div class="card card-home">
+  <div class="card-header">
+    Home
+  </div>
+  <div class="card-body">
+    <% if user_signed_in? %>
+      <h5><%=current_user.name %></h5>
+      <%= button_to 'Go tweet', new_user_registration_path, method: :get, class:"btn btn-primary"%>
+    <%end%>
+  </div>
+</div>
+
+
+
+
+
+

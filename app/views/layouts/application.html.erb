@@ -13,14 +13,47 @@
   </head>
 
   <body>
-    
-    
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+    <nav class="navbar navbar-dark bg-dark">
+    
+      <a class="navbar-brand navbar-title">Twitter clone</a>
+        <% if !user_signed_in? %>
+          <%= button_to 'Sign up', new_user_registration_path, method: :get, class:"btn btn-primary signup-button"%>
+          <%= button_to 'Sign in', new_user_session_path, method: :get, class:"btn btn-light signin-button"%>
+          
+          <%else%>
+            <%= button_to 'Log out', destroy_user_session_path, method: :delete, class:"btn btn-secondary signin-button"%>
+        <% end %>
+    </nav>
+
+    <ul class="nav flex-column nav-flex">
+
+      <span class="fas fa-kiwi-bird navbar-logo" aria-hidden="true"></span>
+
+      <li class="nav-item">
+        <%= link_to users_path do %>
+          <span class="fas fa-home navbar-home-icon" aria-hidden="true"></span>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to username_path(current_user.username) do %>
+          <span class="fas fa-user-alt navbar-icon" aria-hidden="true"></span>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to users_path do %>
+          <span class="far fa-edit navbar-icon" aria-hidden="true"></span>
+        <% end %>
+      </li>
+      
+    </ul>
+    
     <%= yield %>
   </body>
 </html>

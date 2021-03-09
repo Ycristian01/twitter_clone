@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root "user#index"
+  root "users#index"
+  resources :users, except:[:create, :show, :destroy, :edit, :update] do
+    resources :tweets
+  end
 
-  resources :user
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
+  get "/:username", to: "users#show", as: "username"
 end
