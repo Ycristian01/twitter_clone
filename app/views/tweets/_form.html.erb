@@ -1,0 +1,29 @@
+
+
+<%= form_with model: [@user,@tweet] do |form| %>
+  <% if @tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this social network from being saved:</h2>
+
+      <ul>
+        <% @tweet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <div class="card tweet-card">
+    <h2>Write a tweet:</h2>
+    <div class="field">
+      <%= form.text_area :post, class:"form-control field-tweet", placeholder:"What's happening?"%>
+    </div>
+
+    <div class="actions">
+      <%= form.submit class:"btn btn-primary btn-sm tweet-button"%>
+    </div>
+  </div>
+
+<% end %>
+

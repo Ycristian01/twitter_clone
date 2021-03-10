@@ -20,5 +20,11 @@
       <p class="card-text following-label"># following</p>
       <p class="card-text followers-label"># followers</p>
     </div>
+
+    <% @user.tweets.each do |tweet| %>
+      <p>
+        <%=tweet.post%>
+      </p>
+    <% end %>
   </div>
 </div>
