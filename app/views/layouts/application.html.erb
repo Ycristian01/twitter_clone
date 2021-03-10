@@ -41,14 +41,18 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to username_path(current_user.username) do %>
-          <span class="fas fa-user-alt navbar-icon" aria-hidden="true"></span>
+        <% if user_signed_in? %>
+          <%= link_to username_path(current_user.username) do %>
+            <span class="fas fa-user-alt navbar-icon" aria-hidden="true"></span>
+          <% end %>
         <% end %>
       </li>
 
       <li class="nav-item">
-        <%= link_to users_path do %>
-          <span class="far fa-edit navbar-icon" aria-hidden="true"></span>
+        <% if user_signed_in? %>
+          <%= link_to new_user_tweet_path(current_user) do %>
+            <span class="far fa-edit navbar-icon" aria-hidden="true"></span>
+          <% end %>
         <% end %>
       </li>
       

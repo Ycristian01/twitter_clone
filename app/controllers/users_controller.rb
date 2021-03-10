@@ -41,6 +41,18 @@ class UsersController < ApplicationController
     flash[:notice] = "User was successfully destroyed." 
   end
 
+  def follow
+    @user = User.find(params[:id])
+    current_user.followings << @user
+    redirect_back(fallback_location: users_path)
+  end
+  
+  def unfollow
+    @user = User.find(params[:id])
+    current_user.given_follows.find_by(followed_user_id: @user.id).destroy
+    redirect_back(fallback_location: users_path)
+  end
+
 end
 
 private

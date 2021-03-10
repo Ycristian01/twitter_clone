@@ -1,13 +1,46 @@
-<div class="card card-home">
-  <div class="card-header">
-    Home
+<div class="d-flex flex-row">
+  <div class="card card-home">
+    <div class="card-header">
+      Home
+    </div>
+
+    <div class="card-body">
+      <% if user_signed_in? %>
+        <h5><%=current_user.name %></h5>
+        <%= button_to 'Go tweet', new_user_tweet_path(current_user), method: :get, class:"btn btn-primary"%>
+      <%end%>
+    </div>
+    
   </div>
-  <div class="card-body">
-    <% if user_signed_in? %>
-      <h5><%=current_user.name %></h5>
-      <%= button_to 'Go tweet', new_user_tweet_path(current_user), method: :get, class:"btn btn-primary"%>
-    <%end%>
-  </div>
+  <% if user_signed_in? %>
+    <div class="card follow-card">
+
+      <div class="card-header">
+        Who to follow
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <% @users.each do |user| %>
+          <%if user!=current_user%>
+            <div class="d-flex flex-row">
+              <li class="list-group-item list-group-follow">
+                <div class="d-flex flex-row">
+                  <%=user.username%>
+                  <%if current_user.followings.include?(user) %>
+                    <%= button_to 'Unfollow', unfollow_user_path(user), method: "POST", class:"btn btn-outline-primary btn-sm follow-button"%>
+                    <%else%>
+                      <%= button_to 'Follow', follow_user_path(user), method: "POST", class:"btn btn-outline-primary btn-sm follow-button"%>
+                  <%end%>
+                
+
+                </div>
+              </li>
+            </div>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>
 
 
