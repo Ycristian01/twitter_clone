@@ -1,3 +1,24 @@
-<h1><%= @user.name %></h1>
-
-<p><%= @user.username %></p>
+<div class="card show-card">
+  <div class="card-header">
+    <div class="d-flex flex-row">
+      <%= link_to users_path do %>
+        <span class="fas fa-arrow-left arrow-left-icon" aria-hidden="true"></span>
+      <% end %>
+      <h2 ><%=current_user.name%></h2>
+    </div>
+  </div>
+  <div class="card-body">
+    <span class="fas fa-user-circle profile-picture" aria-hidden="true"></span>
+    <div class="d-flex flex-row">
+      <div>
+        <h5 class="card-title"><%=current_user.name%></h5>
+        <p class="card-text username-label">@<%=current_user.username%></p>
+      </div>
+      <%= button_to 'Edit profile', edit_user_registration_path, method: :get, class:"btn btn-outline-primary edit-user-button"%>  
+    </div>
+    <div class="d-flex flex-row">
+      <p class="card-text following-label"># following</p>
+      <p class="card-text followers-label"># followers</p>
+    </div>
+  </div>
+</div>
