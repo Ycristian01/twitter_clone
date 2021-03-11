@@ -6,12 +6,13 @@
 
 .signup-button {
   position: relative;
-  left: 510px;
+  left: 480px;
 }
 
 .signin-button {
-  position: relative;  
+  position: absolute;  
   right: 10px;
+  bottom: 10px;
 }
 
 .edit-user-button {
@@ -45,6 +46,14 @@
   top: 35%;
   border-radius: 20px;
 
+}
+
+.follow-button-view {
+  position:absolute;
+  left: 590px;
+  color: rgba(29,161,242,1.00);
+  border-color:rgba(29,161,242,1.00);
+  border-radius: 15px;
 }
 
 

@@ -51,9 +51,10 @@
 }
 
 .navbar-username-label {
-  position: relative;  
-  left: 350px;
+  position: absolute;
+  right: 110px;
   color: rgba(29,161,242,1.00);
+  top: 8px;
 }
 
 .follow-section {
@@ -77,3 +78,20 @@
   height: auto;
 }
 
+.username-follow-view {
+  position: relative;
+  bottom: 15px;
+  left: 40px;
+}
+
+
+.badge-follow {
+  position: relative;
+  left: 5px;
+  top: 4px;
+}
+
+.name-username-followview {
+  position: relative;
+  bottom: 14px;
+}

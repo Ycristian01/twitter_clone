@@ -4,22 +4,31 @@
       <%= link_to users_path do %>
         <span class="fas fa-arrow-left arrow-left-icon" aria-hidden="true"></span>
       <% end %>
-      <h2 class="username-profile-label" ><%=current_user.name%></h2>
+      
+      <h2 class="username-profile-label" ><%=@user.name%></h2>      
     </div>
   </div>
   <div class="card-body">
     <span class="fas fa-user-circle profile-picture" aria-hidden="true"></span>
     
     <div>
-      <h5 class="card-title"><%=current_user.name%></h5>
-      <p class="card-text username-label">@<%=current_user.username%></p>
+      <h5 class="card-title"><%=@user.name%></h5>
+      <p class="card-text username-label">@<%=@user.username%></p>
     </div>
-    
-    <%= button_to 'Edit profile', edit_user_registration_path, method: :get, class:"btn btn-outline-primary edit-user-button"%>  
+    <%if @user==current_user%>
+      <%= button_to 'Edit profile', edit_user_registration_path, method: :get, class:"btn btn-outline-primary edit-user-button"%>  
+      <%else%>
+        <%if current_user.followings.include?(@user)%>
+          <%= button_to 'Unfollow', unfollow_user_path(@user), method: "POST", class:"btn btn-outline-primary edit-user-button"%>
+          <%else%>
+            <%= button_to 'Follow', follow_user_path(@user), method: "POST", class:"btn btn-outline-primary edit-user-button"%>
+        <%end%>
+
+    <%end%>
     
     <div class="d-flex flex-row follow-section">
-      <p class="card-text following-label"><%=current_user.followings.count%> following</p>
-      <p class="card-text followers-label"><%=current_user.followers.count%> followers</p>
+      <p class="card-text following-label"><%=link_to "#{@user.followings.count} following", users_followview_path(@user.username) %> </p>
+      <p class="card-text followers-label"><%=link_to "#{@user.followers.count} followers", users_followview_path(@user.username) %></p>
     </div>
 
       <ul class="list-group list-group-flush">
@@ -27,25 +36,13 @@
           <li class="list-group-item tweet-profile">
             <div class="d-flex flex-row">
               <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
-              <p class="card-text name-label-tweet"><%=current_user.name%></p>
-              <p class="card-text username-label-tweet"> <%=link_to username_path(current_user.username), "@ #{current_user.username}" %></p>
+              <p class="card-text name-label-tweet"><%=@user.name%></p>
+              <p class="card-text username-label-tweet"> <%=link_to "@#{@user.username}", username_path(@user.username) %></p>
             </div>
             <p class="tweet-style"><%=tweet.post%></p>
           </li>
         <% end %>
       </ul>
-    <%# <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Tweets</button>
-        </li>
-
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-        </li>
-
-    </div> %>
-
       
-
   </div>
 </div>

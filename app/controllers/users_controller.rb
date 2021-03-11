@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy followview ]
 
   def index
     @users = User.all
@@ -13,6 +13,9 @@ class UsersController < ApplicationController
  
   def new
     @user = User.new
+  end
+
+  def followview
   end
 
   def create
