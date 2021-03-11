@@ -1,5 +1,3 @@
-
-
 <%= form_with model: [@user,@tweet] do |form| %>
   <% if @tweet.errors.any? %>
     <div id="error_explanation">
@@ -17,11 +15,11 @@
   <div class="card tweet-card">
     <h2>Write a tweet:</h2>
     <div class="field">
-      <%= form.text_area :post, class:"form-control field-tweet", placeholder:"What's happening?"%>
+      <%= form.text_area :post, class:"form-control", placeholder:"What's happening?"%>
     </div>
 
-    <div class="actions">
-      <%= form.submit class:"btn btn-primary btn-sm tweet-button"%>
+    <div class="actions tweet-button">
+      <%= form.submit class:"btn btn-primary btn-sm"%>
     </div>
   </div>
 

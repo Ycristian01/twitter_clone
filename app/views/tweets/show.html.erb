@@ -1,9 +1,16 @@
 <div class="card show-card">
-
-  <% @user.tweets.each do |tweet| %>
-    <p>
-    <%=tweet.post%>
-    </p>
-  <% end %>
-
+  <ul class="list-group list-group-flush group-flush">
+    <% current_user.tweets.each do |tweet| %>
+      
+      <li class="list-group-item">
+        <div class="d-flex flex-row">
+          <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
+          <p class="card-text name-label-tweet"><%=current_user.name%></p>
+          <p class="card-text username-label-tweet"> <%=link_to "@#{current_user.username}", username_path(current_user.username) %></p>
+        </div>
+        <p class="tweet-style"><%=tweet.post%></p>
+      </li>
+      
+    <% end %>
+  </ul>
 </div>

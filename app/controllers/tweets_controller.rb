@@ -19,7 +19,7 @@ class TweetsController < ApplicationController
       redirect_to user_tweet_path @user, @tweet
       flash[:notice] = "Tweet was successfully created"
     else
-      render 'new'
+      render 'users#index'
     end
   end
 

@@ -9,6 +9,24 @@
         <% if user_signed_in? %>
           <h5><%=current_user.name %></h5>
           <%= button_to 'Go tweet', new_user_tweet_path(current_user), method: :get, class:"btn btn-primary"%>
+
+            <ul class="list-group list-group-flush group-flush">
+              <% @users.each do |user| %>
+                <% user.tweets.each do |tweet| %>
+                  <%if current_user.followings.include?(user) %>
+                    <li class="list-group-item">
+                      <div class="d-flex flex-row">
+                        <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
+                        <p class="card-text name-label-tweet"><%=user.name%></p>
+                        <p class="card-text username-label-tweet"> <%=link_to "@#{user.username}", username_path(user.username) %></p>
+                      </div>
+                      <p class="tweet-style"><%=tweet.post%></p>
+                    </li>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </ul>
+
         <%end%>
       </div>
     </div>
