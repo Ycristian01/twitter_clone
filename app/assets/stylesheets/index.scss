@@ -24,6 +24,12 @@
   bottom: 10px;
 }
 
+.username-profile-label {
+  position: relative;
+  left: 10px;
+  font-size: 35px;
+}
+
 .following-label {
   position: relative;
 }
@@ -41,5 +47,33 @@
 }
 
 .list-group-follow {
-  width: 250px;
+  width: 240px;
 }
+
+.navbar-username-label {
+  position: relative;  
+  left: 350px;
+  color: rgba(29,161,242,1.00);
+}
+
+.follow-section {
+  position: relative;
+  bottom: 40px;
+}
+
+.username-label-tweet {
+  position: static;
+  top: 7px;
+}
+
+.tweet-style {
+  position: relative;
+  bottom: 10px;
+  left: 25px;
+}
+
+.tweet-container {
+  width: auto;
+  height: auto;
+}
+

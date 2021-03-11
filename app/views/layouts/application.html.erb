@@ -27,6 +27,7 @@
           <%= button_to 'Sign in', new_user_session_path, method: :get, class:"btn btn-light signin-button"%>
           
           <%else%>
+            <span class="label label-primary navbar-username-label"><%=current_user.name%></span>
             <%= button_to 'Log out', destroy_user_session_path, method: :delete, class:"btn btn-secondary signin-button"%>
         <% end %>
     </nav>
