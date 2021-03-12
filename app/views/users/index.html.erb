@@ -12,36 +12,19 @@
 
             <ul class="list-group list-group-flush group-flush group-tweets">
 
-              <% Tweet.order([created_at: :desc]).each do |tweet| %>
-                
-                <%if User.find_by(id: tweet.user_id).id==current_user.id%>
-                  
-                  
-                  <li class="list-group-item">
-                    <div class="d-flex flex-row">
-                      <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
-                      <p class="card-text name-label-tweet"><%=current_user.name%></p>
-                      <p class="card-text username-label-tweet"> <%=link_to "@#{current_user.username}", username_path(current_user.username) %></p>
-                      <p class="time-ago-label"><%= time_ago_in_words(tweet.created_at) %> ago</p>
-                    </div>
-                    <p class="tweet-style"><%=tweet.post%></p>
-                  </li>
-      
-                  <%else%>
+              <% @tweets.each do |tweet| %>
 
-                    <%if current_user.followings.include?(User.find_by(id: tweet.user_id)) %>
-                      <li class="list-group-item">
-                        <div class="d-flex flex-row">
-                          <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
-                          <p class="card-text name-label-tweet"><%=User.find_by(id: tweet.user_id).name%></p>
-                          <p class="card-text username-label-tweet"> <%=link_to "@#{User.find_by(id: tweet.user_id).username}", username_path(User.find_by(id: tweet.user_id).username) %></p>
-                          <p class="time-ago-label"><%= time_ago_in_words(tweet.created_at) %> ago</p>
-                        </div>
-                        <p class="tweet-style"><%=tweet.post%></p>
-                      </li>
-                    <%end%>
-
-                <%end%>     
+                    
+                <li class="list-group-item">
+                  <div class="d-flex flex-row">
+                    <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
+                    <p class="card-text name-label-tweet"><%=tweet.user.name%></p>
+                    <p class="card-text username-label-tweet"> <%=link_to "@#{tweet.user.username}", username_path(tweet.user.username) %></p>
+                    <p class="time-ago-label"><%= time_ago_in_words(tweet.created_at) %> ago</p>
+                  </div>
+                  <p class="tweet-style"><%=tweet.post%></p>
+                </li>
+                    
                            
               <% end %>
             </ul>
@@ -88,6 +71,9 @@
     </div>
   <% end %>
 </div>
+
+<%= will_paginate @tweets %>
+
 
 
 

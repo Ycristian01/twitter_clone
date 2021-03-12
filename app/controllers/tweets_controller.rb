@@ -2,9 +2,10 @@ class TweetsController < ApplicationController
   before_action :set_user
   before_action :set_tweet, only: %i[ show edit update destroy ]
 
-  def show
+  def index
+    @tweet = Tweet.order([created_at: :desc])
   end
-
+  
   def new
    @tweet = @user.tweets.new 
   end
@@ -16,7 +17,7 @@ class TweetsController < ApplicationController
    @tweet = @user.tweets.create(tweet_params)
 
     if @tweet.save
-      redirect_to user_tweet_path @user, @tweet
+      redirect_to users_path
       flash[:notice] = "Tweet was successfully created"
     else
       render 'users#index'
