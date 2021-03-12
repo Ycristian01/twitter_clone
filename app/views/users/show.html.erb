@@ -10,10 +10,10 @@
   </div>
   <div class="card-body">
     <span class="fas fa-user-circle profile-picture" aria-hidden="true"></span>
-    
     <div>
       <h5 class="card-title"><%=@user.name%></h5>
       <p class="card-text username-label">@<%=@user.username%></p>
+      <p class="time-ago-label">Joined <%= time_ago_in_words(@user.created_at) %> ago</p>
     </div>
     <%if @user==current_user%>
       <%= button_to 'Edit profile', edit_user_registration_path, method: :get, class:"btn btn-outline-primary edit-user-button"%>  

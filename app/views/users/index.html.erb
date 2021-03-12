@@ -52,7 +52,9 @@
                   <h5 class="card-title"><%=user.name%></h5>
                   <div class="d-flex flex-row name-username-followview">
                     <%=link_to "@#{user.username}", username_path(user.username) %>
-                    <span class="badge badge-secondary badge-follow">Follows you</span>
+                    <% if current_user.followers.include?(user) %>
+                      <span class="badge badge-secondary badge-follow">Follows you</span>
+                    <%end%>
                   </div>
                 </div>
 
@@ -66,13 +68,15 @@
             </li>
             
           <% end %>
+
         <% end %>
       </ul>
     </div>
   <% end %>
 </div>
-
-<%= will_paginate @tweets %>
+<% if user_signed_in? %>
+  <%= will_paginate @tweets %>
+<% end %>
 
 
 

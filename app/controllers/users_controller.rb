@@ -3,13 +3,14 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    current_followings = current_user.followings
-    @tweets = current_user.tweets
-    current_followings.each do |following_user|
-      @tweets = @tweets.or(following_user.tweets)
+    if user_signed_in?
+      current_followings = current_user.followings
+      @tweets = current_user.tweets
+      current_followings.each do |following_user|
+        @tweets = @tweets.or(following_user.tweets)
+      end
+      @tweets = @tweets.order([created_at: :desc]).paginate(page: params[:page], per_page: 10)
     end
-    @tweets = @tweets.order([created_at: :desc]).paginate(page: params[:page], per_page: 10)
-
   end
 
   def show
