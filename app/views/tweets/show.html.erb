@@ -1,6 +1,6 @@
 <div class="card show-card">
   <ul class="list-group list-group-flush group-flush">
-    <% current_user.tweets.each do |tweet| %>
+    <% current_user.tweets.order(created_at: :desc).each do |tweet| %>
       
       <li class="list-group-item">
         <div class="d-flex flex-row">
