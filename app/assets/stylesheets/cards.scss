@@ -8,6 +8,16 @@
   bottom: 150px;
 }
 
+.card-edit-account {
+  width: 400px;
+  height: 650px;
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 10px; 
+  padding: 5px;
+  bottom: 200px;
+}
+
 .card-sign-in {
   width: 300px;
   height: 300px;
@@ -24,7 +34,7 @@
   float: none; 
   margin-bottom: 10px;
   bottom: 180px;
-  width: 400px;
+  width: fit-content;
   height: auto;
 }
 
@@ -61,4 +71,8 @@
   right: 100px;
   width: 300px;
   height: fit-content;
+}
+
+.card-index {
+  width: 400px;
 }

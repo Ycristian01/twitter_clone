@@ -38,6 +38,7 @@
               <span class="fas fa-user-circle mini-profile-icon" aria-hidden="true"></span>
               <p class="card-text name-label-tweet"><%=@user.name%></p>
               <p class="card-text username-label-tweet"> <%=link_to "@#{@user.username}", username_path(@user.username) %></p>
+              <p class="time-ago-label"><%= time_ago_in_words(tweet.created_at) %> ago</p>
             </div>
             <p class="tweet-style"><%=tweet.post%></p>
           </li>

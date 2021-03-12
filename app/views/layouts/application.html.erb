@@ -13,6 +13,7 @@
   </head>
 
   <body>
+  
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -23,6 +24,7 @@
     
       <a class="navbar-brand navbar-title">Twitter clone</a>
         <% if !user_signed_in? %>
+        
           <%= button_to 'Sign up', new_user_registration_path, method: :get, class:"btn btn-primary signup-button"%>
           <%= button_to 'Sign in', new_user_session_path, method: :get, class:"btn btn-light signin-button"%>
           

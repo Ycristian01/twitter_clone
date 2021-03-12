@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   get "/:username", to: "users#show", as: "username"
-
+  
   get '/users/:username/followview', to: 'users#followview', as: "users_followview" # or match for older Rails versions
 
   post '/users/:id/follow', to: "users#follow", as: "follow_user"

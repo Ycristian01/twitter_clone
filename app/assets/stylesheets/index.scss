@@ -91,6 +91,17 @@
 
 .tweet-profile {
   position: absolute;
+  width: 400px;  
+}
+
+.time-ago-label {
+  position: relative;
+  top: 3px;
+  font-size: 12px;
+  left: 5px;
+
+}
+
+.group-tweets {
   width: 400px;
-  
 }
